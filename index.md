@@ -1,37 +1,94 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/yedonglai/remember/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/yedonglai/remember/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>认识你真好</title>
+    <style type="text/css"  ></style>
+    <link href="css/common.css" type="text/css"  rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/calendar.js"></script>
+     <script type="text/javascript" src="date_calc.js"></script>
+      <style>
+            .clock{
+                width: 600px;
+                height: 600px;
+                margin: -180px auto;
+                background:url(clock.png) no-repeat;
+                position: relative;
+				margin-right:200px;
+            }
+            .clock div{
+                width: 600px;
+                height: 600px;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .h{
+                background: url(hour.png)no-repeat center center;
+            }
+            .m{
+                background: url(minute.png)no-repeat center center;
+            }
+            .s{
+                background: url(second.png)no-repeat center center;
+            }
+			.wowowo{
+				margin-left:300px;
+				margin-top:-40px;
+			}
+        </style>
+</head>
+<body>
+  <div id="calendar" style="width:400px;height:200px;margin:30px 0 0 40px"></div>
+    <script type="text/javascript">
+        calender.init("calendar",null);
+    </script>
+     <div class="clock" id="clo">
+            <div class="h"></div>
+            <div class="m"></div>
+            <div class="s"></div>
+        </div>
+    <script type="text/javascript">
+    var clock = document.getElementById("clo");
+    var h = 0, m = 0 , s =0, ms = 0;
+    setInterval(function() {
+        var date = new Date();
+        ms = date.getMilliseconds();
+        s = date.getSeconds()+ms/1000;
+        m = date.getMinutes()+s/60;
+        h = date.getHours() % 12+m/60;
+        
+        clock.children[0].style.WebkitTransform = "rotate("+h*30+"deg)";
+        clock.children[1].style.WebkitTransform = "rotate("+m*6+"deg)";
+        clock.children[2].style.WebkitTransform = "rotate("+s*6+"deg)";
+    },50);
+</script>
+<br/>
+<br/>
+<b>我认识你的天数：</b>
+<br>
+ 
+<input size="8" id="SY2" value="2018">年
+<input size="4" id="SM2" value="9">月
+<input size="4" id="SD2" value="22">日
+ 
+<br>
+<input size="8" id="SY3" value="2018" >年
+<input size="4" id="SM3" value="10">月
+<input size="4" id="SD3" value="24">日
+<br>已经认识你：
+<span id="result2"></span>天
+<br>
+<input type=button value="点这" onClick="calb()">
+<P style="color:red; font-size:20px;" >我每天都会更新的~~~~~~</P>
+<br>
+<div class="wowowo">
+<p><font size="15"> 我的小日记 </font></p>
+<form action="">
+<input type="text" size="60" style=" padding-left:0px; height:150px;" />
+<input type="submit" value="提交" >
+</form>
+</div>
+</body>
+</html>
