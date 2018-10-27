@@ -38,6 +38,19 @@
 				margin-top:-40px;
 			}
         </style>
+	        <script>
+		   var nowtime = new Date ();
+		   var hour=nowtime.getHours();
+		   if ((hour >5 )&&(hour<=11))
+		     alert("猪，早上好!");
+		 else if ((hour > 11)&&(hour<=13))
+		     alert("猪，中午好！");
+			 else if ((hour>13)&&(hour<=17))
+			 alert("猪，下午好！");
+			 else if ((hour>17)&&(hour<=23))
+			 alert("猪，晚上好!");
+	        else alert("猪，别熬太夜了，早点睡，晚安！");
+			</script>
 </head>
 <body>
   <div id="calendar" style="width:400px;height:200px;margin:30px 0 0 40px"></div>
