@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+    #head{
+		background: url(caoyuan2.jpg);
+		margin-top:-10px;
+		height:75px;
+		}
+	.nav li{  
+      padding: 10px 100px;    
+      float: left;   
+      list-style: none;   
+      color:yellow;  
+	  font-size:20px;
+} 
+     #tupian{
+		 text-align:center;
+		background: url(nongchang.jpg);
+	 }
+	 #tupian2{
+		 background:#39F;
+		 width:100%;
+		 height:30px;
+		 margin-top:-10px;
+	 }
+	 .nav1 li {
+		 padding : 4px 100px;
+		 float:left;
+		 list-style:none;
+		 color:yellow;
+		 font-size:15px;
+	 }
+	 #wenduji{
+		 margin-left:80px;
+	 }
+	 #wenduji img {
+		 height:250px;
+	 }
+     #my{
+		 margin-top:-230px;
+		 margin-left:230px;
+	 }
+	 #my h2{
+		 color:#FCC;
+	 }
+	 .txt{
+		 border:solid;
+		 position:absolute;
+	 }
+	 #shuidi{
+		 margin-top:-130px;
+		 margin-left:500px;
+	 }
+	 #shidu h2{
+		  color:#FCC;
+	 }
+	 #shidu{
+		 margin-left:730px;
+		 margin-top:-250px;
+	 }
+	 #guang{
+		 float:right;
+		 margin-right:300px;
+         margin-top:-100px;
+	 }
+	 #guanggan{
+		 margin-left:1250px;
+         margin-top:-100px;
+	 }
+	 #guanggan h2{
+		 	  color:#FCC;
+			  padding-left:100px;
+	 }
+	 #taiyang{
+		 float:right;
+		 margin-right:170px;
+		 margin-top:-100px;
+	 }
+	 #huoqu{
+		 margin-left:730px;
+	 }
+	 #eryang{
+		 margin-top:200px;
+      	 position:relativel;
+		 position:absolute;
+	 }
+	 #co2{
+		 margin-left:450px;
+		 position:relativel;
+		 position:absolute;
+		 margin-top:330px;
+	 }
+	 #nongdu{
+		 margin-top:280px;
+		 margin-left:450px;
+		  position:relativel;
+		 position:absolute;
+	 }
+	 .coo2{
+		 margin-top:370px;
+		 margin-left:450px;
+		  position:relativel;
+		 position:absolute;
+	 }
+</style>
+<script>
+　　　　　　function fun(){
+　　　　　　var GetRandomn = 1;
+　　　　　　var timestamp=new Date().getTime();
+　　　　　　　　function GetRandom(n){
+　　　　　　　　GetRandomn=Math.floor(Math.random()*10+50 );
+			  　　　　　　　　}
+　　　　　　GetRandom("");
+　　　　　　document.getElementById('product').value = GetRandomn+'%';
+　　　　　　}
+           function gun(){
+			var GetRandomn = 1;
+			var timestamp=new Date().getTime();
+			  function GetRandom(n){
+				  GetRandoms=Math.floor(Math.random()*10+25);
+			  }
+			  GetRandom("");
+          document.getElementById('temperature').value = GetRandoms;
+		   }
+		     function lun(){
+			var GetRandomn = 1;
+			var timestamp=new Date().getTime();
+			  function GetRandom(n){
+				  GetRandoms=Math.floor(Math.random()*5+10);
+			  }
+			  GetRandom("");
+          document.getElementById('shine').value = GetRandoms;
+		   }
+		       function yun(){
+			var GetRandomn = 1;
+			var timestamp=new Date().getTime();
+			  function GetRandom(n){
+				  GetRandoms=Math.floor(Math.random()*5+10);
+			  }
+			  GetRandom("");
+          document.getElementById('co2').value = GetRandoms;
+		   }
+</script>
+<script>
+ var http_request;
+ var host=window.location.host;
+ var  URL="http://"+host+"/.php";
+ var id ;
+ if (window.XMLHttpRequest){
+	 http_request=new XMLHttpRequest;
+	 if(http_request.overrideMimeType){
+		 http_request.overrideMimeType("text/xml");
+	 }
+ }else if (window.ActiveXObject){
+	 try{
+		 http_request= new ActiveXObject("Microsoft.XMLHTTP");
+	 }catch(e){
+	 }
+ }if (!http_request){
+	 window.alert("不能创建XMLHTTPRequest对象!");
+ }
+ id =window.setInterval(tip,1000);
+ send_request("GET",URL+"&random="+Math.random(),"","TEXT",processTextResponse);
+ function tip(){
+	 send_request("GET",URL+"&random="+Math.random(),"","TEXT",processTextResponse);
+ }
+ function send_request(method,url,content,responseType,callback){
+	 if (responseType.toLowerCase()=="text"){
+		 http_request.onreadystatechange=callback;
+	 }
+	 else if (responseType.toLowerCase()=="xml"){
+		 	 http_request.onreadystatechange=callback;
+	 window.alert("响应参数错误");
+	 return false ;
+	 }
+	 if (method.toLowerCase()=="get"){
+		 http_request.open(method,url,true);
+	 }else if (method.toLowerCase()=="post"){
+		 http_request.open(method,url,true);
+		 http_request.setRequestHeader("Content_Type","application/x-www-form-urlencoded");
+		 http_request.setRequestHeader("Accept-language","Zh-cn");
+	 }else {
+		 alert("http请求错误");
+		 return false ;
+	 }
+	 http_request.send(content);
+ }
+ function processTextResponse(){
+	 if (http_request.onreadyState==4 && http_request.status==200){
+		 var b=http_request.responseText;
+		 var  myobject=eval('('+b+')');
+		 document.getElementById("my").innerHTML="温度为"+(myobject.success.value)/100+"C";
+	 }
+ }
+	           </script>
+<script>
+setTimeout(function() {
+var e = document.createEvent("MouseEvents");
+e.initEvent("click", true, true);
+document.getElementById("clickMe").dispatchEvent(e);
+var a = document.createEvent("MouseEvents");
+e.initEvent("click", true, true);
+document.getElementById("clickMe1").dispatchEvent(e);
+var b = document.createEvent("MouseEvents");
+e.initEvent("click", true, true);
+document.getElementById("clickMe2").dispatchEvent(e);
+var c = document.createEvent("MouseEvents");
+e.initEvent("click", true, true);
+document.getElementById("clickMe3").dispatchEvent(e);
+
+}, 2);
+
+</script>
+</head>
+<body>
+<div id="head" >
+<ul class="nav">  
+<li><a href="">智能家居</a></li>  
+<li><a href="">智能农场</a></li>  
+<li><a href="">公司产品</a></li>  
+<li><a href="">关于我们</a></li>  
+<li><a href="">公司介绍</a></li> 
+</ul>
+</div >
+<div id="tupian">
+<img src="chuangan.png" />
+
+</div>
+<div id="tupian2">
+<ul class="nav1">  
+<li><a href="">空气温度</a></li>  
+<li><a href="">二氧化碳浓度</a></li>  
+<li><a href="">空气湿度</a></li>  
+<li><a href="">光感强度</a></li>  
+<li><a href="">紫外线强度</a></li> 
+</ul>
+</div>
+<br />
+<div id="wenduji">
+<img src="wendu.png"  />
+</div>
+<div id="my">
+<h2>空气温度:</h2>
+<form action="">
+<input type="text" class="txt"   value="" name ="temperature" id="temperature" />
+<br />
+<a onclick="gun()"  style="cursor:pointer;" class="wendu" id="clickMe">获取</a>
+</form>
+</div>
+<div id="shuidi">
+<img src="shuidi.jpg" />
+</div>
+<div id="shidu">
+<h2>空气湿度:</h2>
+</div>
+<div id="huoqu">
+<form action="" >
+<input type="text"  class="txt"  value="" id="product"  name="product" />
+<br />
+<a onclick="fun()" style="cursor:pointer;" calss="shidu2" id="clickMe1">获取</a>
+</form>
+</div>
+<div id="guang">
+<img src="guanggan.jpg" />
+</div>
+</div>
+<div id="guanggan">
+<h2>光照:</h2>
+<form action="" >
+<div id="taiyang">
+<input type="text"  class="txt2" value="" name="shine" id="shine"  />
+<br />
+<a onclick="lun()" style="cursor:pointer;" calss="shine" id="clickMe2">获取</a>
+</div>
+</form>
+</div>
+<div id="eryang">
+<img src="eryang.jpg" />
+</div>
+<div id="nongdu">
+<h2>二氧化碳浓度:</h2>
+</div>
+<input type="text"  class="txt2" value="" name="co2" id="co2"  />
+<a onclick="yun()" style="cursor:pointer" class="coo2"  id="clickMe3"> 获取 </a>
+</body>
+</html>
